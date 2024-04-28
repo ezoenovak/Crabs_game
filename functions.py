@@ -33,13 +33,14 @@ def continue_game():
 def play_craps():
     while True:
         roll_sum = roll_dice()
-        if roll_sum == 7 or roll_sum == 11:
-            print_result(result_message, roll_sum)
-            print_message(win_message)
-
-        elif roll_sum == 2 or roll_sum == 3 or roll_sum == 12:
-            print_result(result_message, roll_sum)
-            print_message(lose_message)
+        for sublist in roll_options:
+            if roll_sum in sublist:
+                print_result(result_message, roll_sum)
+                if sublist == roll_options[0]:
+                    print_message(win_message)
+                else:
+                    print_message(lose_message)
+                break
 
         else:
             new_goal = roll_sum
